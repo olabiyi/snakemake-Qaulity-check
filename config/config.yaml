@@ -1,0 +1,29 @@
+samples: ["A1", "A2", "A3", "A4", "A5"]
+
+
+# Full paths to the specified programs
+programs_path:
+    multiqc: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/multiqc"
+    fastqc: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/fastqc"
+    trim_galore: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/trim_galore"
+    cutadapt: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/cutadapt"
+    trimmomatic: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/trimmomatic"
+    seqkit: "/home/jeffbrady/anaconda3/envs/bioinfo/bin/seqkit"
+
+# Set tool specific parameters
+parameters:
+   # Adators and primer trimming using cutadapt
+    cutadapt:
+        forward_primer: "CAGCMGCCGCGGTAA"  #"GTGYCAGCMGCCGCGGTAA"
+        reverse_primer: "TACNVGGGTATCTAATCC"  #"GGACTACNVGGGTWTCTAAT"
+        minimum_length: 20 # retain only reads with length greater than this after quality filtering
+        quality_cutoff: 20,20 # trim base with bases with quailty less than 20 from the 5', and 3' regions
+    trimmomatic:
+        adaptors: "/home/jeffbrady/anaconda3/envs/bioinfo/share/trimmomatic-0.39-1/adapters/Nextera_andTruseqPE-PE.fa" #"NexteraPE-PE.fa"
+        min_len: 20
+
+conda:
+    bioinfo:
+        env: "source activate /home/jeffbrady/anaconda3/envs/bioinfo/"
+        perl5lib: "export PERL5LIB=/home/jeffbrady/anaconda3/envs/bioinfo/lib/5.26.2"
+

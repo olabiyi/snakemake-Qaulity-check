@@ -1,0 +1,9 @@
+__default__:
+    system: 'slurm'
+    account: "132773335440"
+    time: "12:00:00" # in minutes
+    mem: "10g" # in GB
+    threads: "10"
+    queue: "xlong" # gpu
+    nodes: "1"
+    
